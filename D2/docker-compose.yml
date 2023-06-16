@@ -1,0 +1,14 @@
+# docker-compose.yml
+version: '3.9'
+
+services:
+  go1:
+    build: ./
+    container_name: server1
+    ports:
+      - '50051:50051'
+  go2:
+    build: ./
+    container_name: server2
+    ports:
+      - '50052:50051'

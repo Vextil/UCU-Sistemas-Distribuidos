@@ -28,7 +28,7 @@
 				{sensor.name}
 
 				{#if !sensor.lastUpdated}
-					<Badge color="dark">Nunca actualizado</Badge>
+					<Badge color="dark">Sin datos</Badge>
 				{:else if sensorNotUpdated(sensor)}
 					<Badge color="red">Inactivo</Badge>
 				{:else if sensor.status == 'leaking'}
@@ -53,12 +53,4 @@
 		justify-content: space-between;
 		align-items: center;
 	}
-
-  .top {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    margin-top: 35px;
-    align-items: center;
-  }
 </style>

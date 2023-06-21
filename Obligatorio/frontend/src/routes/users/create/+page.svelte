@@ -7,41 +7,37 @@
 
 	const userData = get(user) as User;
 
-	let name = '';
+	let username = '';
+	let email = '';
+	let password = '';
 	let createdName = '';
-  let createdId = '';
-	let createdToken = '';
-	let copyTokenText = 'Copiar token';
+	let createdEmail = '';
 
 	function login() {
-		fetch(PUBLIC_API + '/CreateSensor', {
+		fetch(PUBLIC_API + '/CreateUser', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				Authorization: userData.token
 			},
 			body: JSON.stringify({
-				name
+				username,
+				email,
+				password
 			})
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				createdName = name;
-        createdId = data.id;
-				createdToken = data.token;
-				copyTokenText = 'Copiar token';
-				name = '';
+				createdName = username;
+				createdEmail = email;
+				username = '';
+				email = '';
 			});
-	}
-
-	function copyToken() {
-		navigator.clipboard.writeText(createdToken);
-		copyTokenText = 'Copiado';
 	}
 </script>
 
 <div class="top">
-  <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Crear sensor</h1>
+	<h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Crear usuario</h1>
 </div>
 
 {#if createdName}
@@ -59,24 +55,29 @@
 					clip-rule="evenodd"
 				/></svg
 			>
-			<span class="text-lg font-medium">Sensor creado exitosamente!</span>
+			<span class="text-lg font-medium">Usuario creado exitosamente!</span>
 		</div>
 		<p class="mt-2 mb-4 text-sm">
 			<b>Nombre:</b>
-			{createdName}<br>
-      <b>ID:</b>
-			{createdId}
+			{createdName}<br />
+			<b>Email:</b>
+			{createdEmail}
 		</p>
-		<div class="flex gap-2">
-			<Button size="xs" color="green" on:click={copyToken}>{copyTokenText}</Button>
-		</div>
 	</Alert>
 {/if}
 
 <div class="form-container">
 	<div class="mb-6">
-		<Label for="name" class="block mb-2">Nombre</Label>
-		<Input id="name" placeholder="Nombre" bind:value={name} />
+		<Label for="username" class="block mb-2">Username</Label>
+		<Input id="username" placeholder="Username" bind:value={username} />
+	</div>
+	<div class="mb-6">
+		<Label for="email" class="block mb-2">Email</Label>
+		<Input id="email" type="email" placeholder="Email" bind:value={email} />
+	</div>
+	<div class="mb-6">
+		<Label for="password" class="block mb-2">Contraseña</Label>
+		<Input id="password" type="password" placeholder="Contraseña" bind:value={password} />
 	</div>
 
 	<div class="flex flex-col items-center">

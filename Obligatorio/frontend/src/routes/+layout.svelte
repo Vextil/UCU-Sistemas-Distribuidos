@@ -23,6 +23,7 @@
 		<NavUl {hidden}>
 			{#if $user}
 				<NavLi href="/" active={$page.url.pathname === '/' }>Sensores</NavLi>
+        <NavLi href="/users" active={$page.url.pathname === '/users' }>Usuarios</NavLi>
 				<NavLi href="#" on:click={logout}>Salir</NavLi>
 			{/if}
 		</NavUl>

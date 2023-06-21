@@ -1,3 +1,7 @@
+export class UsersResponse {
+  items: User[] = [];
+  count: number = 0;
+}
 export class User {
   username: string;
   token: string;

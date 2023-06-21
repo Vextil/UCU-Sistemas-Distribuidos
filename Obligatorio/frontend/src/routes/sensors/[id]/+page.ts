@@ -5,7 +5,7 @@ import { get } from 'svelte/store';
 import { PUBLIC_API } from '$env/static/public';
 import type { LogsResponse } from '$lib/models/logs';
 
-export const load = (async ({ params }) => {
+export const load = (async ({ fetch, params }) => {
   const userData = get(user);
   if (!userData) {
     throw redirect(307, '/login');

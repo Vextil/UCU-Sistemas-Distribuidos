@@ -3,6 +3,7 @@
 	import '../app.postcss';
 	import { user } from '$lib/stores/user';
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	function logout() {
 		user.set(null);
@@ -21,7 +22,7 @@
 		<NavHamburger on:click={toggle} />
 		<NavUl {hidden}>
 			{#if $user}
-				<NavLi href="/" active={true}>Sensores</NavLi>
+				<NavLi href="/" active={$page.url.pathname === '/' }>Sensores</NavLi>
 				<NavLi href="#" on:click={logout}>Salir</NavLi>
 			{/if}
 		</NavUl>

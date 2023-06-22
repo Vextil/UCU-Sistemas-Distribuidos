@@ -15,6 +15,7 @@ export const load = (async ({ fetch, params }) => {
       headers: {
         Authorization: userData.token
       }
-    }).then(res => res.json() as Promise<LogsResponse>)
+    }).then(res => res.json() as Promise<LogsResponse>),
+    id: params.id
   };
 }) satisfies PageLoad;

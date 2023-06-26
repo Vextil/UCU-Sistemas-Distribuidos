@@ -12,7 +12,7 @@
 		const lastUpdate = new Date(sensor.lastUpdated);
 		const diff = now.getTime() - lastUpdate.getTime();
 		const diffMinutes = Math.round(diff / (1000 * 60));
-		return diffMinutes > 5;
+		return diffMinutes > 1;
 	}
 </script>
 
